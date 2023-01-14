@@ -1,8 +1,8 @@
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 import React, { useCallback, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { createUser } from '../lib/api/createUser';
+import { createUserAPI } from '../lib/api/createUser';
 import { EErrorCode } from '../lib/util/EErrorCode';
 
 export const useSignUp = () => {
@@ -15,7 +15,7 @@ export const useSignUp = () => {
   const [errorMessage, setErrorMessage] = useState(
     '비밀번호를 6자 이상 입력해주세요.'
   );
-  const { mutate } = useMutation(createUser, {
+  const { mutate } = useMutation(createUserAPI, {
     onSuccess: (data) => {
       console.log(data);
       navigator('/todos');

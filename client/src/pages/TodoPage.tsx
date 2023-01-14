@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TodoItem } from '../components/TodoItem/TodoItem';
+import TodoItem from '../components/TodoItem/TodoItem';
 import { useTodo } from '../hooks/useTodo';
 import { CenterContainer } from '../styles/GlobalStyle';
 
@@ -26,6 +26,7 @@ export const TodoPage = () => {
   return (
     <CenterContainer>
       <TodoContainer>
+        <TodoItem id={String(999)} isEdit={true} todoClick={todoClick} />
         {dummy.map((todo, i: number) => {
           return (
             <TodoItem
@@ -33,7 +34,7 @@ export const TodoPage = () => {
               id={String(i)}
               date={todo.date}
               title={todo.title}
-              todoClick={todoClick}
+              // todoClick={todoClick}
             />
           );
         })}

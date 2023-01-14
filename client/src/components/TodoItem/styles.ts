@@ -50,3 +50,30 @@ export const TitleText = styled.span`
   font-size: 20px;
   font-weight: 500;
 `;
+
+export const TodoInput = styled.input`
+  border-radius: 10px;
+  margin-left: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  &:focus {
+    outline: none;
+  }
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff;
+  /* &::placeholder {
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+  } */
+  &::placeholder,
+  &::-webkit-input-placeholder {
+    color: red;
+  }
+  &:-ms-input-placeholder {
+    color: red;
+  }
+`;

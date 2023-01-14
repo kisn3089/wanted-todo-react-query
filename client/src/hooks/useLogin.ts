@@ -2,7 +2,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { doLogin } from '../lib/api/doLogin';
+import { doLoginAPI } from '../lib/api/doLogin';
 import { EErrorCode } from '../lib/util/EErrorCode';
 import AuthContext from '../store/AuthContext';
 
@@ -13,11 +13,7 @@ export const useLogin = () => {
   const navigator = useNavigate();
   const userCtx = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log(userCtx.user);
-  }, [userCtx.user]);
-
-  const { mutate } = useMutation(doLogin, {
+  const { mutate } = useMutation(doLoginAPI, {
     onSuccess: (data: AxiosResponse) => {
       userCtx.loginClick({ email: inputValue.email, token: data.data.token });
       localStorage.setItem('email', inputValue.email);
