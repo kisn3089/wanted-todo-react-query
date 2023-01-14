@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import styled, { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -19,4 +19,9 @@ ${reset}
 } */
     }
 
+`;
+
+export const CenterContainer = styled.main`
+  display: flex;
+  justify-content: center;
 `;

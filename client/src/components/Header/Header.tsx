@@ -1,35 +1,30 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from 'react';
+import AuthContext from '../../store/AuthContext';
 import {
   MainText,
   HeaderContainer,
   NavContainer,
   NavListContainer,
   Links,
-} from "./styles";
+  Li,
+} from './styles';
 
 export const Header = () => {
-  // const [isLogin, setIsLogin] = useState(false);
-  // useEffect(() => {
-  //   console.log("useEffect");
+  const { user, logoutClick } = useContext(AuthContext);
+  const email = user.email.split('@')[0];
+  const token = localStorage.getItem('token');
 
-  //   if (localStorage.getItem("token") === null) {
-  //     setIsLogin(false);
-  //   } else {
-  //     setIsLogin(true);
-  //   }
-  // }, [localStorage.getItem("token")]);
-  const token = localStorage.getItem("token") === null;
   return (
     <HeaderContainer>
       <MainText>TODO</MainText>
       <NavContainer>
         <NavListContainer>
-          {token ? (
+          {token === null ? (
             <li>
               <Links to="/login">login</Links>
             </li>
           ) : (
-            <li onClick={() => localStorage.removeItem("token")}>logout</li>
+            <Li onClick={logoutClick}>{email}</Li>
           )}
 
           <li>

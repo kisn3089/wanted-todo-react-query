@@ -1,35 +1,44 @@
-import { AxiosError, AxiosResponse } from "axios";
-import React, { useCallback, useState } from "react";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { doLogin } from "../lib/api/doLogin";
+import { AxiosError, AxiosResponse } from 'axios';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { doLogin } from '../lib/api/doLogin';
+import { EErrorCode } from '../lib/util/EErrorCode';
+import AuthContext from '../store/AuthContext';
 
 export const useLogin = () => {
-  const [inputValue, setInputValue] = useState({ email: "", password: "" });
-  const [inputFocus, setInputFocus] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [inputValue, setInputValue] = useState({ email: '', password: '' });
+  const [inputFocus, setInputFocus] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigator = useNavigate();
+  const userCtx = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(userCtx.user);
+  }, [userCtx.user]);
+
   const { mutate } = useMutation(doLogin, {
     onSuccess: (data: AxiosResponse) => {
-      console.log(data.data.token);
-      localStorage.setItem("token", data.data.token);
-      navigator("/todos");
+      userCtx.loginClick({ email: inputValue.email, token: data.data.token });
+      localStorage.setItem('email', inputValue.email);
+      localStorage.setItem('token', data.data.token);
+      navigator('/todos');
     },
     onError: (error: AxiosError) => {
       if (error.response?.status === 400) {
-        setErrorMessage("아이디와 비밀번호가 맞지 않습니다.");
+        setErrorMessage(EErrorCode[error.response?.status]);
       }
     },
   });
 
   const changeValue = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = e.target as HTMLInputElement;
-      if (errorMessage !== "") {
-        setErrorMessage("");
+      const { value, id } = e.target as HTMLInputElement;
+      if (errorMessage !== '') {
+        setErrorMessage('');
       }
       setInputValue((prev) => {
-        return { ...prev, [e.target.id]: value };
+        return { ...prev, [id]: value };
       });
     },
     [inputValue]
@@ -48,7 +57,7 @@ export const useLogin = () => {
   }, [inputValue]);
 
   const blurHandler = useCallback(() => {
-    setInputFocus("");
+    setInputFocus('');
   }, [inputFocus]);
 
   return {

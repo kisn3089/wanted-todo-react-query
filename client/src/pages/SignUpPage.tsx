@@ -1,6 +1,6 @@
-import { SignUp } from "../../components/SignUp/SignUp";
-import { useSignUp } from "../../hooks/useSignUp";
-import { CenterContainer } from "../LoginPage/styles";
+import { SignUp } from '../components/SignUp/SignUp';
+import { useSignUp } from '../hooks/useSignUp';
+import { CenterContainer } from '../styles/GlobalStyle';
 
 export const SignUpPage = () => {
   const {

@@ -1,27 +1,28 @@
-import { AxiosError, AxiosResponse } from "axios";
-import React, { useCallback, useState } from "react";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { createUser } from "../lib/api/createUser";
+import { AxiosError, AxiosResponse } from 'axios';
+import React, { useCallback, useState } from 'react';
+import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { createUser } from '../lib/api/createUser';
+import { EErrorCode } from '../lib/util/EErrorCode';
 
 export const useSignUp = () => {
   const [formValue, setFormValue] = useState({
-    email: "",
-    password: "",
-    passwordConfirm: "",
+    email: '',
+    password: '',
+    passwordConfirm: '',
   });
-  const [isFocus, setIsFocus] = useState("");
+  const [isFocus, setIsFocus] = useState('');
   const [errorMessage, setErrorMessage] = useState(
-    "비밀번호를 6자 이상 입력해주세요."
+    '비밀번호를 6자 이상 입력해주세요.'
   );
   const { mutate } = useMutation(createUser, {
     onSuccess: (data) => {
       console.log(data);
-      navigator("/todos");
+      navigator('/todos');
     },
     onError: (error: AxiosError) => {
       if (error.response?.status === 409) {
-        setErrorMessage("이미 있는 계정입니다.");
+        setErrorMessage(EErrorCode[error.response?.status]);
       }
     },
   });
@@ -30,8 +31,8 @@ export const useSignUp = () => {
   const changeValue = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value, id } = e.target as HTMLInputElement;
-      if (errorMessage !== "비밀번호를 6자 이상 입력해주세요.") {
-        setErrorMessage("비밀번호를 6자 이상 입력해주세요.");
+      if (errorMessage !== '비밀번호를 6자 이상 입력해주세요.') {
+        setErrorMessage('비밀번호를 6자 이상 입력해주세요.');
       }
       setFormValue((prev) => {
         return { ...prev, [id]: value };
@@ -43,7 +44,7 @@ export const useSignUp = () => {
   const signUpClick = useCallback(
     (e: React.MouseEvent) => {
       if (formValue.password !== formValue.passwordConfirm) {
-        setErrorMessage("비밀번호가 같지 않습니다.");
+        setErrorMessage('비밀번호가 같지 않습니다.');
       } else {
         mutate({ email: formValue.email, password: formValue.password });
       }
@@ -57,7 +58,7 @@ export const useSignUp = () => {
   }, []);
 
   const blurHandler = useCallback((e: React.FocusEvent) => {
-    setIsFocus("");
+    setIsFocus('');
   }, []);
 
   return {

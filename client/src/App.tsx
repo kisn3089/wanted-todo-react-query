@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
-import { Header } from "./components/Header/Header";
-import { RequiredAuth } from "./lib/util/RequiredAuth";
-import { LoginPage } from "./pages/LoginPage/LoginPage";
-import { SignUpPage } from "./pages/SignUp/SignUpPage";
-import { TodoPage } from "./pages/TodoPage/TodoPage";
+} from 'react-router-dom';
+import { Header } from './components/Header/Header';
+import { RequiredAuth } from './lib/util/RequiredAuth';
+import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
+import { TodoPage } from './pages/TodoPage';
+import AuthContext from './store/AuthContext';
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Router>

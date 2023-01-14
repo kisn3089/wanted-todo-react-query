@@ -1,6 +1,6 @@
-import { Login } from "../../components/Login/Login";
-import { useLogin } from "../../hooks/useLogin";
-import { CenterContainer } from "./styles";
+import { Login } from '../components/Login/Login';
+import { useLogin } from '../hooks/useLogin';
+import { CenterContainer } from '../styles/GlobalStyle';
 
 export const LoginPage = () => {
   const {

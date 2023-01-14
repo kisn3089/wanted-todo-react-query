@@ -59,3 +59,11 @@ export const Links = styled(Link)`
     color: #fff;
   }
 `;
+
+export const Li = styled.li`
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+`;
