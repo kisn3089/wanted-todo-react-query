@@ -8,7 +8,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #444;
+  background-color: #333;
+  box-shadow: 0 0 8px 1px skyblue;
   padding: 0 100px;
   margin-bottom: 80px;
 `;
@@ -31,7 +32,7 @@ export const MainText = styled.div`
 `;
 
 export const NavContainer = styled.nav`
-  background-color: #555;
+  /* background-color: #555; */
   width: 600px;
   height: 100%;
   display: flex;
@@ -65,5 +66,4 @@ export const Li = styled.li`
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 1px;
-  /* text-transform: uppercase; */
 `;
