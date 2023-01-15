@@ -64,16 +64,4 @@ export const TodoInput = styled.input`
   }
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: #fff;
-  /* &::placeholder {
-    font-size: 20px;
-    font-weight: 400;
-    color: red;
-  } */
-  &::placeholder,
-  &::-webkit-input-placeholder {
-    color: red;
-  }
-  &:-ms-input-placeholder {
-    color: red;
-  }
 `;
