@@ -1,24 +1,64 @@
-import React, { useCallback, useContext } from 'react';
-import { useMutation, useQuery } from 'react-query';
-import { createTodoApi } from '../lib/api/createTodo';
-import { getTodosAPI } from '../lib/api/getTodos';
-import AuthContext from '../store/AuthContext';
+import React, { useCallback, useContext, useState } from "react";
+import { useMutation, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { createTodoApi } from "../lib/api/createTodo";
+import AuthContext from "../store/AuthContext";
 
 export const useTodo = () => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  //
-  const { data } = useQuery('todos', () => getTodosAPI(user.token), {
-    onSuccess: (data) => console.log(data),
+  const [todoValue, setTodoValue] = useState({
+    title: "",
+    content: "",
   });
 
-  //   const {mutate} = useMutation(createTodoApi, {
-  //     onSuccess: (data) => console.log(data)
+  // Create Todo Mutate
+  const { mutate: createTodoMutate } = useMutation(createTodoApi, {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries("todos");
+    },
+  });
 
-  //   })
+  // Create Todo Fc
+  const createTodo = useCallback(
+    (e: React.MouseEvent) => {
+      createTodoMutate(
+        {
+          title: todoValue.title,
+          content: "되나?",
+          token: user.token,
+        },
+        {
+          onSuccess: () => setTodoValue({ title: "", content: "" }),
+        }
+      );
+    },
+    [todoValue]
+  );
+
+  const todoTitleChange = useCallback(
+    (e: React.ChangeEvent) => {
+      const { id, value } = e.target as HTMLInputElement;
+      setTodoValue((prev) => {
+        return {
+          ...prev,
+          [id]: value,
+        };
+      });
+    },
+    [todoValue]
+  );
 
   const todoClick = useCallback((e: React.MouseEvent) => {
     const { id } = e.target as HTMLInputElement;
-    console.log(id);
+    navigate(`/todos/${id}`);
   }, []);
-  return { todoClick };
+
+  return {
+    todoValue,
+    todoClick,
+    todoTitleChange,
+    createTodo,
+  };
 };

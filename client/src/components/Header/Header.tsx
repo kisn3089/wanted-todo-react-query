@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react';
-import AuthContext from '../../store/AuthContext';
+import { useContext } from "react";
+import AuthContext from "../../store/AuthContext";
 import {
   MainText,
   HeaderContainer,
@@ -7,12 +7,12 @@ import {
   NavListContainer,
   Links,
   Li,
-} from './styles';
+} from "./styles";
 
 export const Header = () => {
   const { user, logoutClick } = useContext(AuthContext);
-  const email = user.email.split('@')[0];
-  const token = localStorage.getItem('token');
+  const email = user.email.split("@")[0];
+  const token = localStorage.getItem("token");
 
   return (
     <HeaderContainer>
@@ -28,7 +28,7 @@ export const Header = () => {
           )}
 
           <li>
-            <Links to="/todos">Todos</Links>
+            <Links to="/todos">Todo</Links>
           </li>
         </NavListContainer>
       </NavContainer>

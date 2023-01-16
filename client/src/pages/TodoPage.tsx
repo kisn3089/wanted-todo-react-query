@@ -1,44 +1,88 @@
-import React from 'react';
-import styled from 'styled-components';
-import TodoItem from '../components/TodoItem/TodoItem';
-import { useTodo } from '../hooks/useTodo';
-import { CenterContainer } from '../styles/GlobalStyle';
+import { AxiosError } from "axios";
+import React, { useContext } from "react";
+import { useQuery } from "react-query";
+import styled from "styled-components";
+import { Button } from "../components/Login/styles";
+import {
+  FormButton,
+  FormButtonContainer,
+  FormContainer,
+  FormContent,
+  FormDate,
+  FormHeader,
+  FormInput,
+  TodoContainer,
+} from "../components/TodoItem/styles";
+import TodoItem from "../components/TodoItem/TodoItem";
+import { useTodo } from "../hooks/useTodo";
+import { getTodosAPI } from "../lib/api/getTodos";
+import AuthContext from "../store/AuthContext";
+import { CenterContainer } from "../styles/GlobalStyle";
+import { TTodo } from "../types/todo";
 
-export const TodoContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 0 100px;
-`;
+const TodoPage = () => {
+  const { todoValue, todoClick, todoTitleChange, createTodo } = useTodo();
+  const { user } = useContext(AuthContext);
 
-const dummy = [
-  { date: '1.23', title: '카페 가기' },
-  { date: '1.24', title: '아아 타기' },
-  { date: '1.25', title: '작곡 하기' },
-  { date: '1.26', title: '작곡 관련 유튜브 보기' },
-  { date: '1.27', title: '인테리어 잡지 보기' },
-];
+  // Todo 불러오기
+  const { data: todoArr, isLoading } = useQuery(
+    "todos",
+    () => getTodosAPI(user.token),
+    {
+      // onSuccess: (data) => console.log(data),
+    }
+  );
 
-export const TodoPage = () => {
-  const { todoClick } = useTodo();
+  const checkDisabled =
+    todoValue.title.length !== 0 && todoValue.content.length !== 0;
+
   return (
     <CenterContainer>
+      <FormContainer>
+        <FormDate>01.12</FormDate>
+        <FormHeader>
+          <FormInput
+            id="title"
+            type="text"
+            placeholder="제목"
+            value={todoValue.title}
+            onChange={todoTitleChange}
+          />
+        </FormHeader>
+        <FormContent
+          id="content"
+          placeholder="내용을 입력해주세요."
+          value={todoValue.content}
+          onChange={todoTitleChange}
+        />
+        <FormButtonContainer>
+          <FormButton onClick={createTodo} disabled={!checkDisabled}>
+            저장
+          </FormButton>
+        </FormButtonContainer>
+      </FormContainer>
       <TodoContainer>
-        <TodoItem id={String(999)} isEdit={true} todoClick={todoClick} />
-        {dummy.map((todo, i: number) => {
+        {todoArr?.data.data.map((todo: TTodo, i: number) => {
           return (
             <TodoItem
-              key={i}
-              id={String(i)}
-              date={todo.date}
+              key={todo.id}
+              id={todo.id}
+              date={calcDate(todo.updatedAt)}
               title={todo.title}
-              // todoClick={todoClick}
+              todoClick={todoClick}
             />
           );
         })}
       </TodoContainer>
     </CenterContainer>
   );
+};
+
+export default React.memo(TodoPage);
+
+// mm.dd 형식으로 Date 계산
+export const calcDate = (date: string) => {
+  const month = date.split("-")[1];
+  const day = date.split("-")[2].split("T")[0];
+  return `${month}.${day}`;
 };

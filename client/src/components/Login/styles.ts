@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const LoginContainer = styled.section`
   width: 1000px;
@@ -31,7 +31,7 @@ export const ValidMessage = styled.span<{ valid?: boolean }>`
   font-size: 16px;
   font-weight: 500;
   color: #cd2640;
-  opacity: ${(props) => (props.valid ? '0' : '1')};
+  opacity: ${(props) => (props.valid ? "0" : "1")};
   transition: 0.3s ease-in-out;
 `;
 
@@ -43,15 +43,9 @@ export const Button = styled.button`
   font-size: 16px;
   font-weight: 700;
   border-radius: 10px;
-  border: none;
-  outline: none;
-  cursor: pointer;
   transition: 0.2s ease-in-out;
   background-color: skyblue;
-  &:disabled {
-    background-color: #888;
-    cursor: default;
-  }
+  letter-spacing: 2px;
 `;
 
 export const GoToSignUp = styled.span`
