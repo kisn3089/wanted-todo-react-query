@@ -1,22 +1,23 @@
-import React, { useCallback, useContext, useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { createTodoApi } from "../lib/api/createTodo";
-import AuthContext from "../store/AuthContext";
+import React, { useCallback, useContext, useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { createTodoApI } from '../lib/api/createTodo';
+import AuthContext from '../store/AuthContext';
 
 export const useTodo = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [todoValue, setTodoValue] = useState({
-    title: "",
-    content: "",
+    id: '',
+    title: '',
+    content: '',
   });
 
   // Create Todo Mutate
-  const { mutate: createTodoMutate } = useMutation(createTodoApi, {
+  const { mutate: createTodoMutate } = useMutation(createTodoApI, {
     onSuccess: async () => {
-      await queryClient.invalidateQueries("todos");
+      await queryClient.invalidateQueries('todos');
     },
   });
 
@@ -26,11 +27,11 @@ export const useTodo = () => {
       createTodoMutate(
         {
           title: todoValue.title,
-          content: "되나?",
+          content: todoValue.content,
           token: user.token,
         },
         {
-          onSuccess: () => setTodoValue({ title: "", content: "" }),
+          onSuccess: () => setTodoValue({ id: '', title: '', content: '' }),
         }
       );
     },
@@ -50,10 +51,19 @@ export const useTodo = () => {
     [todoValue]
   );
 
-  const todoClick = useCallback((e: React.MouseEvent) => {
-    const { id } = e.target as HTMLInputElement;
-    navigate(`/todos/${id}`);
-  }, []);
+  const todoClick = useCallback(
+    (e: React.MouseEvent) => {
+      const { id } = e.target as HTMLInputElement;
+      setTodoValue((prev) => {
+        return {
+          ...prev,
+          id: id,
+        };
+      });
+      navigate(`/todos/${id}`);
+    },
+    [todoValue]
+  );
 
   return {
     todoValue,

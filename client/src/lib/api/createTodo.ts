@@ -1,6 +1,6 @@
-import { customAxios } from "../util/customAxios";
+import { customAxios } from '../util/customAxios';
 
-export const createTodoApi = async (content: {
+export const createTodoApI = async (content: {
   title: string;
   content: string;
   token: string;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TodoContainer = styled.main`
   padding: 0 30px;
@@ -52,4 +52,30 @@ export const ButtonContainer = styled.div`
   height: 100px;
   background-color: transparent;
   border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+`;
+
+export const UpdateButton = styled.button`
+  width: 250px;
+  height: 50px;
+  background-color: skyblue;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+`;
+
+export const DeleteButton = styled.button`
+  width: 250px;
+  height: 50px;
+  background-color: #cd2640;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
 `;
