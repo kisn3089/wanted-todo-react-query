@@ -16,6 +16,7 @@ import { getTodosAPI } from "../lib/api/getTodos";
 import AuthContext from "../store/AuthContext";
 import { CenterContainer } from "../styles/GlobalStyle";
 import { TTodo } from "../types/todo";
+import { calcDate, calcToday } from "../lib/util/calcDate";
 
 const TodoPage = () => {
   const { todoValue, todoClick, todoTitleChange, createTodo } = useTodo();
@@ -76,20 +77,3 @@ const TodoPage = () => {
 };
 
 export default React.memo(TodoPage);
-
-// mm.dd 형식으로 Date 계산
-export const calcDate = (date: string) => {
-  if (date) {
-    const month = date.split("-")[1];
-    const day = date.split("-")[2].split("T")[0];
-    return `${month}.${day}`;
-  }
-};
-
-export const calcToday = (date: Date) => {
-  if (date) {
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${month}.${day}`;
-  }
-};

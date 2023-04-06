@@ -10,8 +10,7 @@ import {
 } from "./styles";
 
 export const Header = () => {
-  const { user, logoutClick } = useContext(AuthContext);
-  const email = user.email.split("@")[0];
+  const { logoutClick } = useContext(AuthContext);
   const token = localStorage.getItem("token");
 
   return (
@@ -24,7 +23,7 @@ export const Header = () => {
               <Links to="/login">login</Links>
             </li>
           ) : (
-            <Li onClick={logoutClick}>{email}</Li>
+            <Li onClick={logoutClick}>logout</Li>
           )}
 
           <li>

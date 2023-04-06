@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -66,4 +66,6 @@ export const Li = styled.li`
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 1px;
+  color: red;
+  text-transform: uppercase;
 `;
