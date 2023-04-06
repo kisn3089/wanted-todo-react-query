@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { useQuery } from 'react-query';
+import React, { useContext } from "react";
+import { useQuery } from "react-query";
 import {
   FormButton,
   FormButtonContainer,
@@ -9,13 +9,13 @@ import {
   FormHeader,
   FormInput,
   TodoContainer,
-} from '../components/TodoItem/styles';
-import TodoItem from '../components/TodoItem/TodoItem';
-import { useTodo } from '../hooks/useTodo';
-import { getTodosAPI } from '../lib/api/getTodos';
-import AuthContext from '../store/AuthContext';
-import { CenterContainer } from '../styles/GlobalStyle';
-import { TTodo } from '../types/todo';
+} from "../components/TodoItem/styles";
+import TodoItem from "../components/TodoItem/TodoItem";
+import { useTodo } from "../hooks/useTodo";
+import { getTodosAPI } from "../lib/api/getTodos";
+import AuthContext from "../store/AuthContext";
+import { CenterContainer } from "../styles/GlobalStyle";
+import { TTodo } from "../types/todo";
 
 const TodoPage = () => {
   const { todoValue, todoClick, todoTitleChange, createTodo } = useTodo();
@@ -23,7 +23,7 @@ const TodoPage = () => {
 
   // Todo 불러오기
   const { data: todoArr, isLoading } = useQuery(
-    'todos',
+    "todos",
     () => getTodosAPI(user.token),
     {
       // onSuccess: (data) => console.log(data),
@@ -80,8 +80,8 @@ export default React.memo(TodoPage);
 // mm.dd 형식으로 Date 계산
 export const calcDate = (date: string) => {
   if (date) {
-    const month = date.split('-')[1];
-    const day = date.split('-')[2].split('T')[0];
+    const month = date.split("-")[1];
+    const day = date.split("-")[2].split("T")[0];
     return `${month}.${day}`;
   }
 };

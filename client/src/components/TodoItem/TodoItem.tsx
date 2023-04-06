@@ -1,7 +1,7 @@
 import React from "react";
 import { DateText, TitleText, TodoItemContainer } from "./styles";
 
-const week = ["일", "월", "화", "수", "목", "금", "토"];
+// const week = ["일", "월", "화", "수", "목", "금", "토"];
 interface ITodoItem {
   id?: string;
   date?: string;
@@ -20,8 +20,8 @@ const TodoItem = ({
   createTodo,
 }: ITodoItem) => {
   // const day = week[new Date().getDay()];
-  const month = new Date().getMonth() + 1;
-  const today = new Date().getDate();
+  // const month = new Date().getMonth() + 1;
+  // const today = new Date().getDate();
 
   return (
     <>
