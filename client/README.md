@@ -41,40 +41,6 @@ cd server && yarn && yarn start
 - CSS
   - Styled-components
 
-#### 구현 영상
-
-##### 회원가입 & 로그인
-
-![login](https://user-images.githubusercontent.com/96061695/230711037-e586789f-5706-438f-a03f-67fa81c2ceac.gif)
-
-##### Todo 리스트 페이지 & Todo 상세보기 & Todo 생성
-
-![todo](https://user-images.githubusercontent.com/96061695/230711048-af32885e-d098-46f0-831e-4b9df7588f07.gif)
-
-##### Todo 수정 & Todo 삭제
-
-![edit](https://user-images.githubusercontent.com/96061695/230711098-d7f401e5-a4b0-45a4-99cf-8a1ecdf5c148.gif)
-
-##### 회원가입
-
-<img width="994" alt="signup" src="https://user-images.githubusercontent.com/96061695/230711140-4db94f70-9f52-44e6-9252-da590fb2caa5.png">
-
-##### 로그인
-
-<img width="991" alt="login" src="https://user-images.githubusercontent.com/96061695/230711159-e22e1833-3f62-4c7d-9a71-fcba9fc71eff.png">
-
-##### 회원가입 완료
-
-<img width="992" alt="signuped" src="https://user-images.githubusercontent.com/96061695/230711168-10d9055c-9cfb-4403-bef3-f375cf998ac5.png">
-
-##### Todos
-
-<img width="996" alt="todoInit" src="https://user-images.githubusercontent.com/96061695/230711192-a02200d5-a264-4c67-9251-0017585e3950.png">
-
-##### Todo 상세보기
-
-<img width="991" alt="todo" src="https://user-images.githubusercontent.com/96061695/230711210-cbe9380e-1d82-4bbb-ae9b-84ef7f48fe9b.png">
-
 > 기능
 
 ### 회원가입
@@ -112,3 +78,37 @@ cd server && yarn && yarn start
 - 삭제 버튼
   - "정말 삭제하시겠습니까?" 버튼 생성
     - 클릭 시 해당 todo 삭제 후 todos 페이지로 이동
+
+#### 구현 영상
+
+##### 회원가입 & 로그인
+
+![login](https://user-images.githubusercontent.com/96061695/230711037-e586789f-5706-438f-a03f-67fa81c2ceac.gif)
+
+##### Todo 리스트 페이지 & Todo 상세보기 & Todo 생성
+
+![todo](https://user-images.githubusercontent.com/96061695/230711048-af32885e-d098-46f0-831e-4b9df7588f07.gif)
+
+##### Todo 수정 & Todo 삭제
+
+![edit](https://user-images.githubusercontent.com/96061695/230711098-d7f401e5-a4b0-45a4-99cf-8a1ecdf5c148.gif)
+
+##### 회원가입
+
+<img width="994" alt="signup" src="https://user-images.githubusercontent.com/96061695/230711140-4db94f70-9f52-44e6-9252-da590fb2caa5.png">
+
+##### 로그인
+
+<img width="991" alt="login" src="https://user-images.githubusercontent.com/96061695/230711159-e22e1833-3f62-4c7d-9a71-fcba9fc71eff.png">
+
+##### 회원가입 완료
+
+<img width="992" alt="signuped" src="https://user-images.githubusercontent.com/96061695/230711168-10d9055c-9cfb-4403-bef3-f375cf998ac5.png">
+
+##### Todos
+
+<img width="996" alt="todoInit" src="https://user-images.githubusercontent.com/96061695/230711192-a02200d5-a264-4c67-9251-0017585e3950.png">
+
+##### Todo 상세보기
+
+<img width="991" alt="todo" src="https://user-images.githubusercontent.com/96061695/230711210-cbe9380e-1d82-4bbb-ae9b-84ef7f48fe9b.png">
