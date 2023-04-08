@@ -20,8 +20,16 @@
 
 ### 실행 방법
 
+- Client
+
 ```
-$ cd server && yarn && yarn start && cd .. && cd client && npm i && npm start
+$ cd client && npm i && npm start
+```
+
+- Server
+
+```
+$ cd server && yarn && yarn start
 ```
 
 ### Technology
