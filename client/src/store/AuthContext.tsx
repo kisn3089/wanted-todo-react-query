@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = React.createContext({
   user: {
-    email: "",
-    token: "",
+    email: '',
+    token: '',
   },
   loginClick: (userInfo: { email: string; token: string }) => {},
   logoutClick: () => {},
 });
 
 const checkUser = () => {
-  const localEmail = localStorage.getItem("email");
-  return localEmail === null ? "" : localEmail;
+  const localEmail = localStorage.getItem('email');
+  return localEmail === null ? '' : localEmail;
 };
 const checkToken = () => {
-  const localToken = localStorage.getItem("token");
-  return localToken === null ? "" : localToken;
+  const localToken = localStorage.getItem('token');
+  return localToken === null ? '' : localToken;
 };
 
 export const AuthContextProvider = ({
@@ -32,10 +32,10 @@ export const AuthContextProvider = ({
   };
 
   const logoutClick = () => {
-    setUser({ email: "", token: "" });
-    // navigate("/login");
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
+    setUser({ email: '', token: '' });
+    navigate('/login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
   };
 
   return (
@@ -44,8 +44,7 @@ export const AuthContextProvider = ({
         user,
         loginClick,
         logoutClick,
-      }}
-    >
+      }}>
       {children}
     </AuthContext.Provider>
   );

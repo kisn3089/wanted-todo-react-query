@@ -11,6 +11,7 @@ export const LoginPage = () => {
     focusHandler,
     loginClick,
     blurHandler,
+    loginEnterKey,
   } = useLogin();
   return (
     <CenterContainer>
@@ -22,6 +23,7 @@ export const LoginPage = () => {
         focusHandler={focusHandler}
         loginClick={loginClick}
         blurHandler={blurHandler}
+        loginEnterKey={loginEnterKey}
       />
     </CenterContainer>
   );

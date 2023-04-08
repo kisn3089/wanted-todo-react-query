@@ -12,13 +12,13 @@ export const useSignUp = () => {
     passwordConfirm: '',
   });
   const [isFocus, setIsFocus] = useState('');
+  const [joined, setJoined] = useState(false);
   const [errorMessage, setErrorMessage] = useState(
     '비밀번호를 6자 이상 입력해주세요.'
   );
   const { mutate } = useMutation(createUserAPI, {
-    onSuccess: (data) => {
-      console.log(data);
-      navigator('/todos');
+    onSuccess: () => {
+      setJoined(true);
     },
     onError: (error: AxiosError) => {
       if (error.response?.status === 409) {
@@ -61,13 +61,27 @@ export const useSignUp = () => {
     setIsFocus('');
   }, []);
 
+  const signUpEnter = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter')
+        if (formValue.password !== formValue.passwordConfirm) {
+          setErrorMessage('비밀번호가 같지 않습니다.');
+        } else {
+          mutate({ email: formValue.email, password: formValue.password });
+        }
+    },
+    [formValue]
+  );
+
   return {
     formValue,
     errorMessage,
     isFocus,
+    joined,
     changeValue,
     signUpClick,
     focusHandler,
     blurHandler,
+    signUpEnter,
   };
 };

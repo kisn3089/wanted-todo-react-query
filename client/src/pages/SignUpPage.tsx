@@ -7,10 +7,12 @@ export const SignUpPage = () => {
     formValue,
     errorMessage,
     isFocus,
+    joined,
     changeValue,
     signUpClick,
     focusHandler,
     blurHandler,
+    signUpEnter,
   } = useSignUp();
 
   return (
@@ -19,10 +21,12 @@ export const SignUpPage = () => {
         formValue={formValue}
         errorMessage={errorMessage}
         isFocus={isFocus}
+        joined={joined}
         changeValue={changeValue}
         signUpClick={signUpClick}
         focusHandler={focusHandler}
         blurHandler={blurHandler}
+        signUpEnter={signUpEnter}
       />
     </CenterContainer>
   );

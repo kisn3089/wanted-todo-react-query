@@ -11,6 +11,7 @@ interface ILabelInput {
   handleFocus: (e: React.FocusEvent) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleBlur?: (e: React.FocusEvent) => void;
+  handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const LabelInput = ({
@@ -23,6 +24,7 @@ export const LabelInput = ({
   handleFocus,
   handleChange,
   handleBlur,
+  handleKeyDown,
 }: ILabelInput) => {
   return (
     <InputContainer>
@@ -35,6 +37,7 @@ export const LabelInput = ({
         type={type}
         onChange={handleChange}
         onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
       />
     </InputContainer>
   );

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
   background-color: #333;
   box-shadow: 0 0 8px 1px skyblue;
   padding: 0 100px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 `;
 
 export const MainText = styled.div`
