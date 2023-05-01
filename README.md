@@ -16,6 +16,8 @@
 - 삭제 버튼 클릭 시 "정말 삭제하시겠습니까?"라는 삭제 확인 버튼 구현
 ```
 
+### Deployment Vercel: https://wanted-todo-react-query.vercel.app/login
+
 ### 실행 방법
 
 - Client
