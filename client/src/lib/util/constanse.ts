@@ -1,1 +1,1 @@
-export const BASE_URL = `https://localhost:8080`;
+export const BASE_URL = `http://sqfhlucbjm.us19.qoddiapp.com`;
