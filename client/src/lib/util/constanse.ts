@@ -1,1 +1,1 @@
-export const BASE_URL = `http://sqfhlucbjm.us19.qoddiapp.com`;
+export const BASE_URL = `https://sqfhlucbjm.us19.qoddiapp.com`;
