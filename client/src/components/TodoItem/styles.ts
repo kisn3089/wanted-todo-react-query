@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const hoverAnimation = keyframes`
     0% {
@@ -11,7 +11,7 @@ const hoverAnimation = keyframes`
     }
 `;
 
-const formAnimation = keyframes`
+export const formAnimation = keyframes`
     0% {
         opacity: 0;
         transform: translate3d(-60px, 0, 0);
@@ -46,7 +46,7 @@ export const TodoItemContainer = styled.div`
   opacity: 1;
   cursor: pointer;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 1px;
     height: 40%;

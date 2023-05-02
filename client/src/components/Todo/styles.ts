@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { formAnimation } from '../TodoItem/styles';
 
 const FixTextAnimation = keyframes`
   0% {
@@ -20,6 +21,7 @@ const FixTextAnimation = keyframes`
 `;
 
 export const TodoContainer = styled.main`
+  animation: ${formAnimation} 0.5s ease-in-out;
   padding: 0 30px;
 `;
 
